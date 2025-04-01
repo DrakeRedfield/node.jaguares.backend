@@ -1,0 +1,13 @@
+# npm
+node_modules
+package-lock.json
+*.log
+*.gz
+
+# Compiled Files
+dist/*
+logs/*
+
+# Env Variables
+.env
+
