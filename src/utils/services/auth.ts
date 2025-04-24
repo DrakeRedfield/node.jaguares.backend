@@ -1,6 +1,6 @@
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
-import { User } from '../../db/model/user';
+import { User } from '../../db/model/User';
 import { Customer } from '../../db/model/customer';
 
 export const generatePassword = (password: string) => {

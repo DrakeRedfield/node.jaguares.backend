@@ -1,6 +1,6 @@
 import postgresService from '../../config';
 import { logger } from '../../../utils/services/winston';
-import { User } from '../../model/user';
+import { User } from '../../model/User';
 import { generatePassword } from '../../../utils/services/auth';
 import { errorLoggerHandler } from '../../../utils/services/error';
 
@@ -17,7 +17,7 @@ export const seedAdmin = async () => {
       await postgresService.dataSource.createQueryBuilder()
         .insert()
         .into(User)
-        .values({ id: 1, email: 'admin@admin.com', password, name: 'admin', lastName: 'admin' })
+        .values({ email: 'admin@admin.com', password, name: 'admin', lastName: 'admin' })
         .execute();
       logger.info("======= User saved successfully");
     }

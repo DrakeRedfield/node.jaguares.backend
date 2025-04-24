@@ -1,5 +1,5 @@
 import postgresService from '../../config'
-import { User } from "../../model/user";
+import { User } from "../../model/User";
 
 export const getUserAndPasswordByEmail = (email: string) => {
   const repository = postgresService.getRepository(User);
