@@ -1,9 +1,9 @@
 import { loginUserAdminResolver } from "../service";
 
-export const userMutationResolvers = {
+export default {
   Mutation: {
     loginUserAdmin: (_parent: any, args: any, _context: any, _info: any) => {
       return loginUserAdminResolver(args);
     },
-  }
+  },
 }

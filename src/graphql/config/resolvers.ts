@@ -1,13 +1,10 @@
-import { productsResolvers } from "../../app/products/resolvers";
-import { userResolvers } from "../../app/user/resolvers";
+import { mergeResolvers } from "@graphql-tools/merge";
+import path from "path";
+import { loadFilesSync } from "@graphql-tools/load-files";
 
-export const resolvers = {
-  Query: {
-    ...productsResolvers.Query,
-    ...userResolvers.Query
-  },
-  Mutation: {
-    ...productsResolvers.Mutation,
-    ...userResolvers.Mutation
-  }
-};
+const resolversArray = loadFilesSync([
+  path.join(__dirname, '../../app/**/resolvers/**/*.{ts,js}'),
+  path.join(__dirname, '../../app/commons/resolvers/**/*.{ts,js}')
+]);
+
+export const resolvers = mergeResolvers(resolversArray);

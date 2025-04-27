@@ -23,7 +23,7 @@ const productType = `#graphql
   }
 `;
 
-export const productMutationSchemas = [
+export default [
   productSchema,
   productType
 ];

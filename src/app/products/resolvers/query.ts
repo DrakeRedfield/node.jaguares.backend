@@ -1,6 +1,6 @@
 import { getProductResolver, getProductsPaginated } from "../service";
 
-export const productsQueryResolvers = {
+export default {
   Query: {
     products: (_parent: any, args: any, _context: any, _info: any) => {
       return getProductsPaginated(args);
@@ -9,4 +9,5 @@ export const productsQueryResolvers = {
       return getProductResolver(args);
     },
   }
+  
 }

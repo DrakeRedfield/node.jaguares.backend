@@ -24,7 +24,7 @@ const productType = `#graphql
   }
 `;
 
-export const productQuerySchemas = [
+export default [
   productSchema,
   productType
 ];

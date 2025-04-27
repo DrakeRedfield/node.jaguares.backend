@@ -1,5 +1,5 @@
 
-export const userQueryResolvers = {
+export default {
   Query: {
     
   }

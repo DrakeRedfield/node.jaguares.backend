@@ -12,14 +12,14 @@ const userType = `#graphql
   }
 
   type UserLoginData {
-    id: Int
+    id: String
     email: String
     name: String
     lastName: String
   }
 `;
 
-export const userMutationSchemas = [
+export default [
   userSchema,
   userType
 ];

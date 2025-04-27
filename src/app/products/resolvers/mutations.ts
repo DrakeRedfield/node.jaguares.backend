@@ -1,7 +1,7 @@
 import { requireAdminAuth } from "../../../utils/services/auth";
 import { createProductResolver, deleteProductResolver, updateProductResolver } from "../service";
 
-export const productsMutationResolvers = {
+export default {
   Mutation: {
     createProduct: requireAdminAuth((_parent: any, args: any, _context: any, _info: any) => {
       return createProductResolver(args);
