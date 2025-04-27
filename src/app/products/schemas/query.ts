@@ -16,11 +16,7 @@ const productType = `#graphql
 
   type Products {
     data: [Product]
-    count: Int
-    currentPage: Int
-    lastPage: Int
-    nextPage: Int
-    prevPage: Int
+    pagination: PaginationInfo
   }
 `;
 

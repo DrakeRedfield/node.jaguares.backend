@@ -1,10 +1,11 @@
 export default [
   `#graphql
-   type paginationInfo {
-     next: Int
-     pages: Int
-     count: Int
-     prev: Int
+   type PaginationInfo {
+    count: Int
+    currentPage: Int
+    nextPage: Int
+    prevPage: Int
+    totalPages: Int
    }
  `
 ]
