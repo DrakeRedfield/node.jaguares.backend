@@ -1,8 +1,9 @@
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, DeleteDateColumn, OneToMany } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, DeleteDateColumn, OneToMany, ManyToOne, JoinColumn } from 'typeorm';
 import { Teacher } from './Teacher';
 import { Student } from './Student';
 import { Event } from './Event';
 import { Service } from './Service';
+import { User } from './User';
 
 @Entity()
 export class Doujang {
@@ -29,6 +30,10 @@ export class Doujang {
 
   @OneToMany(() => Service, service => service.doujang)
   services: Service[];
+
+  @ManyToOne(() => User, user => user.doujangs)
+  @JoinColumn()
+  owner: User;
 
   @CreateDateColumn()
   createdAt: Date;

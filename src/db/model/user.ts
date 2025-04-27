@@ -1,4 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, DeleteDateColumn } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, DeleteDateColumn, OneToMany } from 'typeorm';
+import { Doujang } from './Doujang';
 
 @Entity()
 export class User {
@@ -16,6 +17,9 @@ export class User {
 
   @Column()
   password: string;
+
+  @OneToMany(() => Doujang, doujang => doujang.owner)
+  doujangs: Doujang[];
 
   @CreateDateColumn()
   createdAt: Date;

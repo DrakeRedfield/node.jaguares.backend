@@ -1,7 +1,6 @@
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import { User } from '../../db/model/User';
-import { Customer } from '../../db/model/customer';
 
 export const generatePassword = (password: string) => {
   return bcrypt.hash(password, 10);
@@ -11,7 +10,7 @@ export const comparePassword = (password: string, encryptedPassword: string) => 
   return bcrypt.compare(password, encryptedPassword);
 }
 
-export const signJWTSession = (user: Partial<User> | Partial<Customer>) => {
+export const signJWTSession = (user: Partial<User>) => {
   const { id, email, name, lastName } = user;
   const expirationTime = +(process.env.LOGIN_EXP_TIME_HOURS || 8)
   const expirationHours = `${expirationTime}h`;

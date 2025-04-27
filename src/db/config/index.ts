@@ -11,7 +11,7 @@ class PostgresqlService {
     this.dataSource = new DataSource(getDbConfig());
     this.dataSource.initialize()
       .then((conn) => {
-        seedDB();
+        if (process.env.DB_SEED === 'true') seedDB();
         logger.info("Data Source has been initialized!");
       })
       .catch((err) => {
