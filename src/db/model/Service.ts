@@ -1,5 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, DeleteDateColumn, ManyToOne, JoinColumn } from 'typeorm';
-import { Doujang } from './Doujang';
+import { School } from './School';
 
 @Entity()
 export class Service {
@@ -12,9 +12,9 @@ export class Service {
   @Column()
   description: string;
 
-  @ManyToOne(() => Doujang, doujang => doujang.services)
+  @ManyToOne(() => School, school => school.services)
   @JoinColumn()
-  doujang: Doujang;
+  school: School;
 
   @CreateDateColumn()
   createdAt: Date;

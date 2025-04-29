@@ -1,5 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, DeleteDateColumn, ManyToOne, JoinColumn } from 'typeorm';
-import { Doujang } from './Doujang';
+import { School } from './School';
 
 @Entity()
 export class Event {
@@ -21,9 +21,9 @@ export class Event {
   @Column({ default: 0 })
   cost: number;
 
-  @ManyToOne(() => Doujang, doujang => doujang.events)
+  @ManyToOne(() => School, school => school.events)
   @JoinColumn()
-  doujang: Doujang;
+  school: School;
 
   @CreateDateColumn()
   createdAt: Date;

@@ -6,7 +6,7 @@ import { Service } from './Service';
 import { User } from './User';
 
 @Entity()
-export class Doujang {
+export class School {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
@@ -16,22 +16,25 @@ export class Doujang {
   @Column()
   location: string;
 
-  @Column()
-  coords: string;
+  @Column({ type: 'real' })
+  coordX: number;
 
-  @OneToMany(() => Teacher, teacher => teacher.doujang)
+  @Column({ type: 'real' })
+  coordY: number;
+
+  @OneToMany(() => Teacher, teacher => teacher.school)
   teachers: Teacher[];
 
-  @OneToMany(() => Student, student => student.doujang)
+  @OneToMany(() => Student, student => student.school)
   students: Student[];
 
-  @OneToMany(() => Event, event => event.doujang)
+  @OneToMany(() => Event, event => event.school)
   events: Event[];
 
-  @OneToMany(() => Service, service => service.doujang)
+  @OneToMany(() => Service, service => service.school)
   services: Service[];
 
-  @ManyToOne(() => User, user => user.doujangs)
+  @ManyToOne(() => User, user => user.schools)
   @JoinColumn()
   owner: User;
 

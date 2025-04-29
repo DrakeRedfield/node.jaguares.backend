@@ -1,7 +1,7 @@
 import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, DeleteDateColumn, ManyToOne, OneToMany, JoinColumn } from 'typeorm';
 import { PaymentMethod } from './PaymentMethod';
 import { Student } from './Student';
-import { Doujang } from './Doujang';
+import { School } from './School';
 import { PaymentAssignment } from './PaymentAssignment';
 
 @Entity()
@@ -26,9 +26,9 @@ export class Payment {
   @JoinColumn()
   student: Student;
 
-  @ManyToOne(() => Doujang, { eager: true })
+  @ManyToOne(() => School, { eager: true })
   @JoinColumn()
-  doujang: Doujang;
+  school: School;
 
   @OneToMany(() => PaymentAssignment, pa => pa.payment)
   assignments: PaymentAssignment[];

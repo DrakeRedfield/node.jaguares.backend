@@ -1,6 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, DeleteDateColumn, ManyToOne, JoinColumn, OneToMany } from 'typeorm';
 import { Grade } from './Grade';
-import { Doujang } from './Doujang';
+import { School } from './School';
 import { Payment } from './Payment';
 
 @Entity()
@@ -24,9 +24,9 @@ export class Student {
   @JoinColumn()
   grade: Grade;
 
-  @ManyToOne(() => Doujang, doujang => doujang.students)
+  @ManyToOne(() => School, school => school.students)
   @JoinColumn()
-  doujang: Doujang;
+  school: School;
 
   @OneToMany(() => Payment, payment => payment.student)
   payments: Payment[];
