@@ -1,6 +1,7 @@
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import { User } from '../../db/model/User';
+import { GraphQLContext, ResolverFn } from "../interfaces/graphql";
 
 export const generatePassword = (password: string) => {
   return bcrypt.hash(password, 10);
@@ -28,7 +29,13 @@ export const getDecodedPayloadJWT = (token: string) => {
   return jwt.verify(token, process.env.JWT_SECRET_KEY || '');
 }
 
-export const requireAdminAuth = (resolver: any) => (_parent: any, args: any, _context: any, _info: any) => {
-  if(!_context.user) throw new Error('Unauthorized');
-  return resolver(_parent, args, _context, _info);
-}
+export const requireAdminAuth = <P = any, A = any, R = any>(
+  resolver: ResolverFn<P, A, GraphQLContext, R>
+): ResolverFn<P, A, GraphQLContext, R> => {
+  return (parent, args, context, info) => {
+    if (!context.user) {
+      throw new Error('Unauthorized');
+    }
+    return resolver(parent, args, context, info);
+  };
+};
